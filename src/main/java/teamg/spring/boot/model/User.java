@@ -9,7 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    Long id;
 
     @Column
     String login;
@@ -23,10 +23,15 @@ public class User {
     @Column
     String surname;
 
+//    FIX-ME
+//    @Column
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+//    private Set<Appointment> appointments;
+
     public User() {
     }
 
-    public User(long id, String login, String password, String name, String surname) {
+    public User(Long id, String login, String password, String name, String surname) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -34,11 +39,11 @@ public class User {
         this.surname = surname;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
