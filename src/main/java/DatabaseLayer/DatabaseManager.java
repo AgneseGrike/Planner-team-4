@@ -38,6 +38,7 @@ public class DatabaseManager {
                 appointment.setEndDateTime(rs.getTimestamp(4).toLocalDateTime());
                 appointment.setNotes(rs.getString(5));
                 appointments.add(appointment);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
