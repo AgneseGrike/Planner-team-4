@@ -45,5 +45,23 @@ public class DatabaseManager {
         return appointments;
     }
 
+    public User findUser(long id) {
+        User user = new User(0, null, null, null, null);
+        try {
+            PreparedStatement statement = conn.prepareStatement("select * from users where id = ?");
+            statement.setLong(1, id);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                user.setId(rs.getLong(1));
+                user.setLogin(rs.getString(2));
+                user.setPassword(rs.getString(3));
+                user.setName(rs.getString(4));
+                user.setName(rs.getString(5));
+            }
 
-}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    }
