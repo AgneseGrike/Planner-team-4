@@ -9,10 +9,10 @@ public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
+    Long id;
 
     @Column
-    long userID;
+    Long userID;
 
     @Column
     LocalDateTime startDateTime;
@@ -26,7 +26,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(long id, long userID, LocalDateTime startDateTime, LocalDateTime endDateTime, String notes) {
+    public Appointment(Long id, Long userID, LocalDateTime startDateTime, LocalDateTime endDateTime, String notes) {
         this.id = id;
         this.userID = userID;
         this.startDateTime = startDateTime;
@@ -34,19 +34,19 @@ public class Appointment {
         this.notes = notes;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(long userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 

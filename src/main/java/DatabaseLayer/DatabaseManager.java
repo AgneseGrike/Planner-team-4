@@ -46,8 +46,8 @@ public class DatabaseManager {
         return appointments;
     }
 
-    public User findUser(long id) {
-        User user = new User(0, null, null, null, null);
+    public User findUser(Long id) {
+        User user = new User(0l, null, null, null, null);
         try {
             PreparedStatement statement = conn.prepareStatement("select * from users where id = ?");
             statement.setLong(1, id);
