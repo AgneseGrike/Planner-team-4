@@ -3,7 +3,6 @@ package DatabaseLayer;
 
 import DatabaseLayer.Entities.Appointment;
 import DatabaseLayer.Entities.User;
-import org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
