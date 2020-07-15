@@ -1,4 +1,4 @@
-package DatabaseLayer.Entities;
+package teamg.spring.boot.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

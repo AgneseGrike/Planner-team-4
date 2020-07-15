@@ -1,8 +1,8 @@
 package DatabaseLayer;
 
 
-import DatabaseLayer.Entities.Appointment;
-import DatabaseLayer.Entities.User;
+import teamg.spring.boot.model.Appointment;
+import teamg.spring.boot.model.User;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
