@@ -29,9 +29,9 @@ public class AppointmentController {
 
     //TEST - display a list of all appointments for all users
     @GetMapping("/appointments")
-    public String viewHomePage(Model model) {
+    public Model viewHomePage(Model model) {
         model.addAttribute("listAppointments", appointmentService.getAllAppointments());
-        return "appointments";
+        return model;
     }
 
     @GetMapping("appointment/{id}")
