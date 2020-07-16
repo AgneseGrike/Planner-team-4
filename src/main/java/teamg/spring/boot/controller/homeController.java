@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
@@ -32,11 +32,11 @@ public class homeController {
     }
 
     @PostMapping("/addEvent")
-    public String addEvent(@ModelAttribute Appointment appointment) {
+    public RedirectView addEvent(@ModelAttribute Appointment appointment) {
         appointment.setUser(userService.getUserById((long) 9));
         appointmentService.saveAppointment(appointment);
-
-        return "home";
+        Long id = appointment.getId();
+        return new RedirectView("appointment/"+id);
     }
 
     @GetMapping("appointment/{id}")
