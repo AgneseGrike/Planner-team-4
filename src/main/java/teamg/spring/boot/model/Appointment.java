@@ -4,15 +4,16 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "appointments")
+@Table(name = "appointment")
 public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column
-    Long userID;
+    @ManyToOne
+    @JoinColumn (name = "user_id", nullable = false)
+    User user;
 
     @Column
     LocalDateTime startDateTime;
@@ -26,9 +27,9 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Long id, Long userID, LocalDateTime startDateTime, LocalDateTime endDateTime, String notes) {
+    public Appointment(Long id, User user, LocalDateTime startDateTime, LocalDateTime endDateTime, String notes) {
         this.id = id;
-        this.userID = userID;
+        this.user = user;
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.notes = notes;
@@ -42,12 +43,12 @@ public class Appointment {
         this.id = id;
     }
 
-    public Long getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getStartDateTime() {

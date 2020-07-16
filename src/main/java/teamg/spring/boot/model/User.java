@@ -1,10 +1,12 @@
 package teamg.spring.boot.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -23,10 +25,10 @@ public class User {
     @Column
     String surname;
 
-//    FIX-ME
-//    @Column
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-//    private Set<Appointment> appointments;
+
+    @Column
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private Set<Appointment> appointments;
 
     public User() {
     }
