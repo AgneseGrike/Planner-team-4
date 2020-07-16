@@ -16,8 +16,8 @@
         </tr>
             <tr th:each="appointment : ${listAppointments}">
                 <td th:text="${appointment.user.id}"></td>
-                <td th:text="${appointment.startDateTime}"></td>
-                <td th:text="${appointment.endDateTime}"></td>
+                <td th:text="${appointment.startDate}"></td>
+                <td th:text="${appointment.endDate}"></td>
                 <td th:text="${appointment.notes}"></td>
             </tr>
         </thead>

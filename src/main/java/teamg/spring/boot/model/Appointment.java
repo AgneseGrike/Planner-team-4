@@ -67,7 +67,7 @@ public class Appointment {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDateTime) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
