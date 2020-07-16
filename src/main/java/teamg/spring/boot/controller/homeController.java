@@ -28,6 +28,12 @@ public class homeController {
         return "createEvent";
     }
 
+    @PostMapping("/addEvent")
+    public String addEvent(@ModelAttribute Appointment appointment) {
+
+        return "home";
+    }
+
     @GetMapping("appointment/{id}")
     public String getAppointmentById(@PathVariable Long id, Model model) {
         model.addAttribute("appointment", appointmentService.getAppointmentById(id));

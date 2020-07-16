@@ -7,19 +7,19 @@
 <body>
     <h1>Create new Event</h1>
 
-    <form:form method="POST" action="" modelAttribute="Appointment">
+    <form action="#" th:action="@{/addEvent}" th:object="${appointment}" method="post">
 
                 <label>Description:</label>
-                <input type="text" name="notes" /><br/>
+                <input type="text" th:field="*{notes}" /><br/>
 
                 <label name="startDateTime">Start date</label>
-                <input type="datetime-local" name="startDateTime" /><br/>
+                <input type="datetime-local" th:field="*{startDateTime}" /><br/>
 
                 <label name="endDateTime">End date</label>
-                <input type="datetime-local" name="endDateTime" /><br/>
+                <input type="datetime-local" th:field="*{endDateTime}" /><br/>
 
                 <input type="submit" value="Submit"/>
 
-    </form:form>
+    </form>
 </body>
 </html>
