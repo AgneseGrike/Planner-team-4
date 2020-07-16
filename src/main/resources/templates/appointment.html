@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>createEvent</title>
+</head>
+<body>
+
+<div align="center">
+    <h1>Appointment</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>User Id</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td th:text="${appointment.user.id}"></td>
+            <td th:text="${appointment.startDateTime}"></td>
+            <td th:text="${appointment.endDateTime}"></td>
+            <td th:text="${appointment.notes}"></td>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

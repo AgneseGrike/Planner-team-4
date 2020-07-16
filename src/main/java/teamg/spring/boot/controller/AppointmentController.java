@@ -34,11 +34,11 @@ public class AppointmentController {
         return model;
     }
 
-    @GetMapping("appointment/{id}")
-    public Appointment getAppointmentById(@PathVariable Long id) {
-        LOG.info("getUserById: " + id);
-        return appointmentService.getAppointmentById(id);
-    }
+  //  @GetMapping("appointment/{id}")
+   // public Appointment getAppointmentById(@PathVariable Long id) {
+   //     LOG.info("getUserById: " + id);
+   //     return appointmentService.getAppointmentById(id);
+   // }
 
     @GetMapping("appointments/{id}")
     public List<Appointment> getAppointments(@PathVariable Long id) {

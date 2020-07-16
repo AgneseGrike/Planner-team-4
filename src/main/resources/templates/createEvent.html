@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>createEvent</title>
+</head>
+<body>
+    <h1>Create new Event</h1>
+
+    <form:form method="POST" action="" modelAttribute="Appointment">
+
+                <label>Description:</label>
+                <input type="text" name="notes" /><br/>
+
+                <label name="startDateTime">Start date</label>
+                <input type="datetime-local" name="startDateTime" /><br/>
+
+                <label name="endDateTime">End date</label>
+                <input type="datetime-local" name="endDateTime" /><br/>
+
+                <input type="submit" value="Submit"/>
+
+    </form:form>
+</body>
+</html>
