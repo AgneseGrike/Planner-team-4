@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
+import teamg.spring.boot.service.UserService;
 
 @Controller
 public class homeController {
 
     @Autowired
     private AppointmentService appointmentService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String home() {
@@ -30,6 +33,8 @@ public class homeController {
 
     @PostMapping("/addEvent")
     public String addEvent(@ModelAttribute Appointment appointment) {
+        appointment.setUser(userService.getUserById((long) 9));
+        appointmentService.saveAppointment(appointment);
 
         return "home";
     }

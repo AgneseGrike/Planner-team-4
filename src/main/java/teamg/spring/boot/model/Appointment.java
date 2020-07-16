@@ -1,7 +1,9 @@
 package teamg.spring.boot.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "appointment")
@@ -16,10 +18,12 @@ public class Appointment {
     User user;
 
     @Column
-    LocalDateTime startDateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    LocalDate startDate;
 
     @Column
-    LocalDateTime endDateTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    LocalDate endDate;
 
     @Column
     String notes;
@@ -27,11 +31,11 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Long id, User user, LocalDateTime startDateTime, LocalDateTime endDateTime, String notes) {
+    public Appointment(Long id, User user, LocalDate startDate, LocalDate endDate, String notes) {
         this.id = id;
         this.user = user;
-        this.startDateTime = startDateTime;
-        this.endDateTime = endDateTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.notes = notes;
     }
 
@@ -51,20 +55,20 @@ public class Appointment {
         this.user = user;
     }
 
-    public LocalDateTime getStartDateTime() {
-        return startDateTime;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStartDateTime(LocalDateTime startDateTime) {
-        this.startDateTime = startDateTime;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDateTime() {
-        return endDateTime;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setEndDateTime(LocalDateTime endDateTime) {
-        this.endDateTime = endDateTime;
+    public void setEndDate(LocalDate endDateTime) {
+        this.endDate = endDate;
     }
 
     public String getNotes() {
@@ -80,8 +84,8 @@ public class Appointment {
         return "Appointment{" +
                 "id=" + id +
                 ", user=" + user +
-                ", startDateTime=" + startDateTime +
-                ", endDateTime=" + endDateTime +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
                 ", notes='" + notes + '\'' +
                 '}';
     }
