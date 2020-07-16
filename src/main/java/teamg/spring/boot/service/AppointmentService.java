@@ -9,13 +9,14 @@ import teamg.spring.boot.repository.AppointmentRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Component
 public class AppointmentService {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    public Appointment getAppointmentById (Long id) {
+    public Appointment getAppointmentById(Long id) {
         return appointmentRepository
                 .findById(id).orElseThrow(
                         () -> new UserNotFoundException(
@@ -32,11 +33,14 @@ public class AppointmentService {
         return result;
     }
 
-//  FIX-ME : Do we need another method for appointments?
+    public List<Appointment> getAllAppointmentsByUser(long userId) {
+        return appointmentRepository.findUserAppointments(userId);
+    }
 
 
-    public void saveAppointment(Appointment appointment){
+    public void saveAppointment(Appointment appointment) {
         appointmentRepository.save(appointment);
     }
+
 
 }
