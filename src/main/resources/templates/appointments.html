@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment List</title>
+</head>
+<body>
+<div align="center">
+    <h1>Appointment List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>User Id</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Notes</th>
+        </tr>
+            <tr th:each="appointment : ${listAppointments}">
+                <td th:text="${appointment.Userid}"></td>
+                <td th:text="${appointment.fromDate}"></td>
+                <td th:text="${appointment.toDate}"></td>
+                <td th:text="${appointment.notes}"></td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -2,6 +2,7 @@ package teamg.spring.boot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import teamg.spring.boot.exception.UserNotFoundException;
 import teamg.spring.boot.model.User;
 import teamg.spring.boot.repository.UserRepository;
