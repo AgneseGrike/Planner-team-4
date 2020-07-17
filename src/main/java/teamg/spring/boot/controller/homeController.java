@@ -52,4 +52,17 @@ public class homeController {
         return "home";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editAppointment(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("appointment", appointmentService.getAppointmentById(id));
+        return "editAppointment";
+    }
+
+    @PostMapping("/update/{id}")
+    public RedirectView updateUser(@PathVariable("id") long id, @ModelAttribute Appointment appointment) {
+        appointment.setUser(userService.getUserById((long) 9));
+        appointmentService.saveAppointment(appointment);
+        return new RedirectView("/appointment/"+id);
+    }
+
 }

@@ -22,6 +22,9 @@
             <td><form action="#" th:action="@{/delete/{id}(id=${appointment.id})}">
                 <button type="submit">DELETE</button>
             </form></td>
+            <td><form action="#" th:action="@{/edit/{id}(id=${appointment.id})}">
+                <button type="submit">EDIT</button>
+            </form></td>
         </tr>
         </thead>
         <tbody>
