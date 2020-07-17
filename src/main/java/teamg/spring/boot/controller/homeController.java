@@ -45,4 +45,11 @@ public class homeController {
         return "appointment";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteApp(@PathVariable("id") Long id, Model model) {
+        Appointment appointment = appointmentService.getAppointmentById(id);
+        appointmentService.deleteAppointment(appointment);
+        return "home";
+    }
+
 }

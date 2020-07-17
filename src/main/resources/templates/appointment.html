@@ -19,6 +19,9 @@
             <td th:text="${appointment.startDate}"></td>
             <td th:text="${appointment.endDate}"></td>
             <td th:text="${appointment.notes}"></td>
+            <td><form action="#" th:action="@{/delete/{id}(id=${appointment.id})}">
+                <button type="submit">DELETE</button>
+            </form></td>
         </tr>
         </thead>
         <tbody>
