@@ -49,7 +49,7 @@ public class homeController {
     public String deleteApp(@PathVariable("id") Long id, Model model) {
         Appointment appointment = appointmentService.getAppointmentById(id);
         appointmentService.deleteAppointment(appointment);
-        return "home";
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
