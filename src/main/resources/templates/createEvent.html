@@ -9,14 +9,23 @@
 
     <form action="#" th:action="@{/addEvent}" th:object="${appointment}" method="post">
 
-                <label>Description:</label>
-                <input type="text" th:field="*{notes}" /><br/>
+                <label>Title:</label>
+                <input type="text" th:field="*{title}" /><br/>
 
-                <label name="startDateTime">Start date</label>
+                <label name="startDate">Start date</label>
                 <input type="date" th:field="*{startDate}" /><br/>
 
-                <label name="endDateTime">End date</label>
+                <label name="endDate">End date</label>
                 <input type="date" th:field="*{endDate}" /><br/>
+
+                <label name="startTime">Start time</label>
+                <input type="time" th:field="*{startTime}" /><br/>
+
+                <label name="endDate">End date</label>
+                <input type="time" th:field="*{endTime}" /><br/>
+
+                <label>Description:</label>
+                <input type="text" th:field="*{notes}" /><br/>
 
                 <input type="submit" value="Submit"/>
 
