@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "appointment")
@@ -18,6 +19,9 @@ public class Appointment {
     User user;
 
     @Column
+    String title;
+
+    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     LocalDate startDate;
 
@@ -26,67 +30,71 @@ public class Appointment {
     LocalDate endDate;
 
     @Column
+    LocalTime startTime;
+
+    @Column
+    LocalTime endTime;
+
+    @Column
     String notes;
 
     public Appointment() {
     }
 
-    public Appointment(Long id, User user, LocalDate startDate, LocalDate endDate, String notes) {
+    public Appointment(Long id, User user, String title, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime, String notes) {
         this.id = id;
         this.user = user;
+        this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.notes = notes;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user; }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public void setUser(User user) { this.user = user; }
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+    public String getTitle() { return title; }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+    public void setTitle(String title) { this.title = title; }
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+    public LocalDate getStartDate() { return startDate; }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
 
-    public String getNotes() {
-        return notes;
-    }
+    public LocalDate getEndDate() { return endDate; }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
+
+    public LocalTime getStartTime() { return startTime; }
+
+    public void setStartTime(LocalTime startTime) { this.startTime = startTime; }
+
+    public LocalTime getEndTime() { return endTime; }
+
+    public void setEndTime(LocalTime endTime) { this.endTime = endTime; }
+
+    public String getNotes() { return notes; }
+
+    public void setNotes(String notes) { this.notes = notes; }
 
     @Override
     public String toString() {
         return "Appointment{" +
-                "id=" + id +
-                ", user=" + user +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", notes='" + notes + '\'' +
+                "id= " + id +
+                ", user= " + user +
+                ", title= " + title +
+                ", startDate= " + startDate +
+                ", endDate= " + endDate +
+                ", startTime= " + startTime +
+                ", endTime= " + endTime +
+                ", notes= '" + notes + '\'' +
                 '}';
     }
 }
