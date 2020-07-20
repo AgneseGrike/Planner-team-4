@@ -12,8 +12,24 @@
   width: 200px;
   height: 600px;
   background-color: #f1f1f1;
+  display: block;
+  float: left;
 }
+.floating-box {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  color: #000;
+}
+.floating-box:hover{
+background-color: #555;
+  color: white;
+}
+.date{
+ text-align: center
 
+}
 li a {
   display: block;
   color: #000;
@@ -41,7 +57,9 @@ li a:hover {
 
     <div>
 
+
     </div>
 
+    <div class="floating-box" th:each="date: ${listDates}"><h1 class="date" th:text="${date}"></h1></div>
 </body>
 </html>

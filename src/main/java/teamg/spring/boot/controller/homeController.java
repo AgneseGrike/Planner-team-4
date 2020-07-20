@@ -12,6 +12,9 @@ import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class homeController {
 
@@ -21,7 +24,12 @@ public class homeController {
     private UserService userService;
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        List<Integer> dateList = new ArrayList<>();
+        for(int i=1;i<=31;i++){
+            dateList.add(i);
+        }
+        model.addAttribute("listDates",dateList);
         return "home";
         // will show user events
     }
