@@ -6,7 +6,9 @@ import teamg.spring.boot.exception.UserNotFoundException;
 import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.repository.AppointmentRepository;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -37,6 +39,13 @@ public class AppointmentService {
         return appointmentRepository.findUserAppointments(userId);
     }
 
+    public List<Appointment> getAllAppointmentsByUserAndDate(long userId, Date date) {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        String mysqlDateString = formatter.format(date);
+        System.out.println(mysqlDateString);
+        return appointmentRepository.findUserEndDateAppointments(userId,mysqlDateString);
+    }
 
     public void saveAppointment(Appointment appointment) {
         appointmentRepository.save(appointment);

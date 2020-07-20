@@ -12,8 +12,8 @@ import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormatSymbols;
+import java.util.*;
 
 @Controller
 public class homeController {
@@ -26,7 +26,14 @@ public class homeController {
     @GetMapping("/")
     public String home(Model model) {
         List<Integer> dateList = new ArrayList<>();
-        for(int i=1;i<=31;i++){
+
+
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Riga"));
+
+
+
+        model.addAttribute("month",new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
+        for(int i=1;i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++){
             dateList.add(i);
         }
         model.addAttribute("listDates",dateList);
@@ -51,6 +58,14 @@ public class homeController {
     public String getAppointmentById(@PathVariable Long id, Model model) {
         model.addAttribute("appointment", appointmentService.getAppointmentById(id));
         return "appointment";
+    }
+    @GetMapping("/testQuery")
+    public String getAppointmentByUserIdAndDate( Model model) {
+        Date dateee = new Date(1595116800000L);
+        System.out.println(dateee.toString());
+
+        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(9,dateee));
+        return "appointments";
     }
 
     @GetMapping("/delete/{id}")
