@@ -3,6 +3,7 @@ package teamg.spring.boot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import teamg.spring.boot.DateAppointments;
@@ -10,6 +11,7 @@ import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
 
+import javax.validation.Valid;
 import java.text.DateFormatSymbols;
 import java.util.*;
 
@@ -40,16 +42,21 @@ public class homeController {
     }
 
     @GetMapping("/createEvent")
-    public String createEvent(Appointment appointment) {
+    public String createEvent(Appointment appointment, Model model) {
+        model.addAttribute(new Appointment());
         return "createEvent";
     }
 
     @PostMapping("/addEvent")
-    public RedirectView addEvent(@ModelAttribute Appointment appointment) {
-        appointment.setUser(userService.getUserById((long) 9));
-        appointmentService.saveAppointment(appointment);
-        Long id = appointment.getId();
-        return new RedirectView("appointment/"+id);
+    public String addEvent(@ModelAttribute @Valid Appointment appointment, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            return "createEvent";
+        } else {
+            appointment.setUser(userService.getUserById((long) 9));
+            appointmentService.saveAppointment(appointment);
+            Long id = appointment.getId();
+            return "redirect:/appointment/" + id;
+        }
     }
 
     @GetMapping("appointment/{id}")
