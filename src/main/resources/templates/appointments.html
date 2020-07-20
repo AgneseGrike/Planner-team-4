@@ -10,14 +10,20 @@
         <thead>
         <tr>
             <th>User Id</th>
+            <th>Title</th>
             <th>From Date</th>
             <th>To Date</th>
+            <th>Starts at</th>
+            <th>Ends at</th>
             <th>Notes</th>
         </tr>
             <tr th:each="appointment : ${listAppointments}">
                 <td th:text="${appointment.user.id}"></td>
+                <td th:text="${appointment.title}"></td>
                 <td th:text="${appointment.startDate}"></td>
                 <td th:text="${appointment.endDate}"></td>
+                <td th:text="${appointment.startTime}"></td>
+                <td th:text="${appointment.endTime}"></td>
                 <td th:text="${appointment.notes}"></td>
             </tr>
         </thead>
