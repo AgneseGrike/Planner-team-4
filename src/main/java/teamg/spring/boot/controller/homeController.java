@@ -3,11 +3,9 @@ package teamg.spring.boot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+import teamg.spring.boot.DateAppointments;
 import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
@@ -24,19 +22,19 @@ public class homeController {
     private UserService userService;
 
     @GetMapping("/")
-    public String home(Model model) {
-        List<Integer> dateList = new ArrayList<>();
+    public String home(@RequestParam(value = "month", required = false) String month, Model model) {
+
 
 
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Riga"));
-
-
+        DateAppointments da = new DateAppointments(cal,appointmentService);
+        if(month!=null&&month.contentEquals("")){
+            da.setMonth(Integer.parseInt(month)-1);
+        }
 
         model.addAttribute("month",new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
-        for(int i=1;i<=cal.getActualMaximum(Calendar.DAY_OF_MONTH);i++){
-            dateList.add(i);
-        }
-        model.addAttribute("listDates",dateList);
+
+        model.addAttribute("days",da);
         return "home";
         // will show user events
     }

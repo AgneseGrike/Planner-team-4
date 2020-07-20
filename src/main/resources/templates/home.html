@@ -22,7 +22,19 @@
   margin: 5px;
   color: #000;
 }
+.floating-box-red {
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  color: #000;
+  background-color: red;
+}
 .floating-box:hover{
+background-color: #555;
+  color: white;
+}
+.floating-box-red:hover{
 background-color: #555;
   color: white;
 }
@@ -60,6 +72,10 @@ li a:hover {
 
     </div>
     <h1 th:text="${month}"></h1>
-    <div class="floating-box" th:each="date: ${listDates}"><h1 class="date" th:text="${date}"></h1></div>
+    <div
+            c
+         th:each="date: ${days.getListDays()}"
+         th:classappend="${days.hasEvent(date)} ? floating-box-red : floating-box"
+    ><h1 class="date" th:text="${date}"></h1></div>
 </body>
 </html>
