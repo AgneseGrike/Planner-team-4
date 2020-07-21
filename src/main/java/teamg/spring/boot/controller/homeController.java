@@ -1,6 +1,9 @@
 package teamg.spring.boot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import teamg.spring.boot.DateAppointments;
 import teamg.spring.boot.model.Appointment;
+import teamg.spring.boot.model.User;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
 
@@ -29,15 +33,17 @@ public class homeController {
     }
 
     @GetMapping("/home")
-    public String home(@RequestParam(value = "month", required = false) String month, Model model) {
+    public String home( @RequestParam(value = "month", required = false) String month, Model model) {
 
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Riga"));
-        DateAppointments da = new DateAppointments(cal, appointmentService);
+        DateAppointments da = new DateAppointments(userService.getByLogin(userName).getId(),cal, appointmentService);
         if (month != null && !month.contentEquals("")) {
             da.setMonth(Integer.parseInt(month) - 1);
         }
 
+        model.addAttribute("username",userName);
         model.addAttribute("month", new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
 
         model.addAttribute("days", da);

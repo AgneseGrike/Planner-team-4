@@ -8,13 +8,14 @@ import java.util.Date;
 import java.util.List;
 
 public class DateAppointments {
-    public static int HARDCODED_USERID = 9;
+    long userid;
     Calendar cal;
     AppointmentService as;
     public List<Integer> listDays;
-    public DateAppointments(Calendar cal,AppointmentService as){
+    public DateAppointments(long userid,Calendar cal,AppointmentService as){
         this.cal=cal;
         this.as=as;
+        this.userid=userid;
 
     }
     public List<Integer> getListDays(){
@@ -29,7 +30,7 @@ public class DateAppointments {
     }
     public boolean hasEvent(int day){
         cal.set(Calendar.DAY_OF_MONTH,day);
-        if(as.getAllAppointmentsByUserAndDate(HARDCODED_USERID,cal.getTime()).size()>0){
+        if(as.getAllAppointmentsByUserAndDate(userid,cal.getTime()).size()>0){
             System.out.println(day+"True");
             return true;
         }
