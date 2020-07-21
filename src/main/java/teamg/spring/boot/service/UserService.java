@@ -13,6 +13,7 @@ import java.util.List;
 @Component
 public class UserService {
 
+
     @Autowired
     private UserRepository userRepository;
 
@@ -25,7 +26,18 @@ public class UserService {
         return result;
     }
 
-    public User getUserById(Long id) {return userRepository.findById(id).orElseThrow(
-            () -> new UserNotFoundException(
-                    "User with id: " + id + " not found!")); }
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(
+                () -> new UserNotFoundException(
+                        "User with id: " + id + " not found!"));
+    }
+
+    public User getByLogin(String login) {
+        return userRepository.findByLogin(login);
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
 }

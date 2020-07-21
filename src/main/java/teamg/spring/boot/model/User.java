@@ -27,6 +27,8 @@ public class User {
     String surname;
 
 
+
+
     @Column
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Appointment> appointments;
@@ -40,6 +42,15 @@ public class User {
         this.password = password;
         this.name = name;
         this.surname = surname;
+    }
+
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     public Long getId() {
