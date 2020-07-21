@@ -40,7 +40,7 @@ public class AppointmentController {
    //     return appointmentService.getAppointmentById(id);
    // }
 
-    @GetMapping("appointments/{id}")
+    @GetMapping("/appointments/{id}")
     public List<Appointment> getAppointments(@PathVariable Long id) {
         LOG.info("getUserAppointmentsById: " + id);
         User user;

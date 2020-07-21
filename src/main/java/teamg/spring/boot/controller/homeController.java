@@ -24,19 +24,23 @@ public class homeController {
     private UserService userService;
 
     @GetMapping("/")
+    public String redirectToLogin() {
+        return "redirect:/home";
+    }
+
+    @GetMapping("/home")
     public String home(@RequestParam(value = "month", required = false) String month, Model model) {
 
 
-
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Riga"));
-        DateAppointments da = new DateAppointments(cal,appointmentService);
-        if(month!=null&&month.contentEquals("")){
-            da.setMonth(Integer.parseInt(month)-1);
+        DateAppointments da = new DateAppointments(cal, appointmentService);
+        if (month != null && month.contentEquals("")) {
+            da.setMonth(Integer.parseInt(month) - 1);
         }
 
-        model.addAttribute("month",new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
+        model.addAttribute("month", new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
 
-        model.addAttribute("days",da);
+        model.addAttribute("days", da);
         return "home";
         // will show user events
     }
@@ -64,12 +68,13 @@ public class homeController {
         model.addAttribute("appointment", appointmentService.getAppointmentById(id));
         return "appointment";
     }
+
     @GetMapping("/testQuery")
-    public String getAppointmentByUserIdAndDate( Model model) {
+    public String getAppointmentByUserIdAndDate(Model model) {
         Date dateee = new Date(1595116800000L);
         System.out.println(dateee.toString());
 
-        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(9,dateee));
+        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(9, dateee));
         return "appointments";
     }
 
@@ -90,7 +95,7 @@ public class homeController {
     public RedirectView updateUser(@PathVariable("id") long id, @ModelAttribute Appointment appointment) {
         appointment.setUser(userService.getUserById((long) 9));
         appointmentService.saveAppointment(appointment);
-        return new RedirectView("/appointment/"+id);
+        return new RedirectView("/appointment/" + id);
     }
 
 }
