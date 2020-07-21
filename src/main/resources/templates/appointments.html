@@ -1,36 +1,47 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Appointment List</title>
+    <title>Events</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        table {
+            width: 100%;
+        }
+        td {
+            width: 33%;
+        }
+    </style>
 </head>
-<body>
-<div align="center">
-    <h1>Appointment List</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>User Id</th>
-            <th>Title</th>
-            <th>From Date</th>
-            <th>To Date</th>
-            <th>Starts at</th>
-            <th>Ends at</th>
-            <th>Notes</th>
-        </tr>
-            <tr th:each="appointment : ${listAppointments}">
-                <td th:text="${appointment.user.id}"></td>
-                <td th:text="${appointment.title}"></td>
-                <td th:text="${appointment.startDate}"></td>
-                <td th:text="${appointment.endDate}"></td>
-                <td th:text="${appointment.startTime}"></td>
-                <td th:text="${appointment.endTime}"></td>
-                <td th:text="${appointment.notes}"></td>
-            </tr>
-        </thead>
-        <tbody>
 
-        </tbody>
-    </table>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h2>Your events</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+            <div class="list-group list-group-flush" th:each="appointment : ${listAppointments}">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <table>
+                            <tr>
+                                <td>
+                                    <div th:text="${appointment.startDate}"></div>
+                                    <div th:text="${appointment.endDate}"></div>
+                                </td>
+                                <td>
+                                    <div th:text="${appointment.startTime}"></div>
+                                    <div th:text="${appointment.endTime}"></div>
+                                </td>
+                                <td th:text="${appointment.title}"></td>
+                            </tr>
+                    </table>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
