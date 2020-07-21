@@ -34,7 +34,7 @@ public class homeController {
 
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Riga"));
         DateAppointments da = new DateAppointments(cal, appointmentService);
-        if (month != null && month.contentEquals("")) {
+        if (month != null && !month.contentEquals("")) {
             da.setMonth(Integer.parseInt(month) - 1);
         }
 
