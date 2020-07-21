@@ -3,37 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>createEvent</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        textarea {
+            resize: none;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+            margin: 0;
+            display: block;
+            opacity: 1;
+            -webkit-transition: .333s ease top, .333s ease opacity;
+            transition: .333s ease top, .333s ease opacity;
+        }
+
+        .form-control {
+            border-radius: 0;
+            border-color: #ccc;
+            border-width: 0 0 2px 0;
+            border-style: none none solid none;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #5e9bfc;
+        }
+
+        .js-hide-label {
+            opacity: 0;
+        }
+
+        .js-unhighlight-label {
+            color: #999
+        }
+
+        .btn-start-order {
+            background: 0 0 #ffffff;
+            border: 1px solid #2f323a;
+            border-radius: 3px;
+            color: #2f323a;
+            font-family: "Raleway", sans-serif;
+            font-size: 16px;
+            line-height: inherit;
+            margin: 30px 0;
+            padding: 10px 50px;
+            text-transform: uppercase;
+            transition: all 0.25s ease 0s;
+        }
+
+        .btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+            border-color: #5e9bfc;
+            color: #5e9bfc;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Create new Event</h1>
-
-    <form action="#" th:action="@{/addEvent}" th:object="${appointment}" method="post">
-
-                <label>Title:</label>
-                <input type="text" th:field="*{title}" />
-                <span th:errors="*{title}"></span><br/>
-
-                <label name="startDate">Start date</label>
-                <input type="date" th:field="*{startDate}" />
-                <span th:errors="*{startDate}"></span><br/>
-
-                <label name="endDate">End date</label>
-                <input type="date" th:field="*{endDate}" />
-                <span th:errors="*{endDate}"></span><br/>
-
-                <label name="startTime">Start time</label>
-                <input type="time" th:field="*{startTime}" />
-                <span th:errors="*{startTime}"></span><br/>
-
-                <label name="endDate">End date</label>
-                <input type="time" th:field="*{endTime}" />
-                <span th:errors="*{endTime}"></span><br/>
-
-                <label>Description:</label>
-                <input type="text" th:field="*{notes}" /><br/>
-
-                <input type="submit" value="Submit"/>
-
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h2>Create new Event</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+            <form id="contact-form" class="form" action="#" th:action="@{/addEvent}" th:object="${appointment}" method="post">
+                <div class="form-group">
+                    <label class="form-label">Title: </label>
+                    <input type="text" class="form-control" th:field="*{title}" />
+                    <span th:errors="*{title}"></span><br/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" name="startDate">Start date</label>
+                    <input type="date" class="form-control" th:field="*{startDate}" />
+                    <span th:errors="*{startDate}"></span><br/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" name="endDate">End date</label>
+                    <input type="date" class="form-control" th:field="*{endDate}" />
+                    <span th:errors="*{endDate}"></span><br/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" name="startTime">Starts at: </label>
+                    <input type="time" class="form-control" th:field="*{startTime}" />
+                    <span th:errors="*{startTime}"></span><br/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" name="endTime">Ends at: </label>
+                    <input type="time" class="form-control" th:field="*{endTime}" />
+                    <span th:errors="*{endTime}"></span><br/>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" name="notes">Description: </label>
+                    <input type="textare" class="form-control" th:field="*{notes}" />
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-start-order">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+
+
