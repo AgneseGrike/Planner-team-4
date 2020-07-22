@@ -59,10 +59,13 @@ public class homeController {
 
     @PostMapping("/addEvent")
     public String addEvent(@ModelAttribute @Valid Appointment appointment, Errors errors, Model model) {
+        //Fixed the hardcoded user id -roberts
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+
         if (errors.hasErrors()) {
             return "createEvent";
         } else {
-            appointment.setUser(userService.getUserById((long) 9));
+            appointment.setUser(userService.getByLogin(userName));
             appointmentService.saveAppointment(appointment);
             Long id = appointment.getId();
             return "redirect:/appointment/" + id;
