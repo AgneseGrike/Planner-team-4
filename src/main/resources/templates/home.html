@@ -65,7 +65,7 @@ li a:hover {
 
 
 <body>
-    <h1 th:text="${username}">test</h1>
+    <h1 th:text="'Welcome, ' + ${username}">test</h1>
     <ul>
         <li><a th:href="@{createEvent}">Create new Event</a></li>
         <li><a th:href="@{appointments}">See all appointments</a></li>
