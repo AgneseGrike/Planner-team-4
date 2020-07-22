@@ -24,7 +24,7 @@
     <div class="row justify-content-center">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
             <div class="list-group list-group-flush" th:each="appointment : ${listAppointments}">
-                <a href="#" class="list-group-item list-group-item-action">
+                <a th:href="@{'/appointment/' + ${appointment.getId()}}" class="list-group-item list-group-item-action">
                     <table>
                             <tr>
                                 <td>

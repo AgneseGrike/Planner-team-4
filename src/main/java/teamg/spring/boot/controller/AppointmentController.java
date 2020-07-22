@@ -32,18 +32,25 @@ public class AppointmentController {
 
     //TEST - display a list of all appointments for all users
     @GetMapping("/appointments")
-    public Model viewHomePage(@RequestParam("date") String date,Model model) {
+    public Model viewHomePage(@RequestParam(value ="date",required=false) String date,Model model) {
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        Calendar cal = Calendar.getInstance();
-        String[] dateA = date.split("-");
-        int day = Integer.parseInt(dateA[2]);;
-        int month = Integer.parseInt(dateA[1]);;
-        int year = Integer.parseInt(dateA[0]);
-        cal.set(Calendar.DAY_OF_MONTH,day);
-        cal.set(Calendar.MONTH,month-1);
-        cal.set(Calendar.YEAR,year);
-        System.out.println(cal.toString());
-        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(us.getByLogin(userName).getId(),cal.getTime()));
+        if(date!=null) {
+            if(!date.contentEquals("")){
+            Calendar cal = Calendar.getInstance();
+            String[] dateA = date.split("-");
+            int day = Integer.parseInt(dateA[2]);
+            ;
+            int month = Integer.parseInt(dateA[1]);
+            ;
+            int year = Integer.parseInt(dateA[0]);
+            cal.set(Calendar.DAY_OF_MONTH, day);
+            cal.set(Calendar.MONTH, month - 1);
+            cal.set(Calendar.YEAR, year);
+            model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(us.getByLogin(userName).getId(), cal.getTime()));
+        }}else{
+            model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUser(us.getByLogin(userName).getId()));
+
+        }
         return model;
     }
 
