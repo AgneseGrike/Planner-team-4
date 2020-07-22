@@ -3,9 +3,11 @@ package teamg.spring.boot.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import teamg.spring.boot.exception.UserNotFoundException;
 import teamg.spring.boot.model.Appointment;
@@ -13,6 +15,7 @@ import teamg.spring.boot.model.User;
 import teamg.spring.boot.service.AppointmentService;
 import teamg.spring.boot.service.UserService;
 
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,8 +32,18 @@ public class AppointmentController {
 
     //TEST - display a list of all appointments for all users
     @GetMapping("/appointments")
-    public Model viewHomePage(Model model) {
-        model.addAttribute("listAppointments", appointmentService.getAllAppointments());
+    public Model viewHomePage(@RequestParam("date") String date,Model model) {
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Calendar cal = Calendar.getInstance();
+        String[] dateA = date.split("-");
+        int day = Integer.parseInt(dateA[2]);;
+        int month = Integer.parseInt(dateA[1]);;
+        int year = Integer.parseInt(dateA[0]);
+        cal.set(Calendar.DAY_OF_MONTH,day);
+        cal.set(Calendar.MONTH,month-1);
+        cal.set(Calendar.YEAR,year);
+        System.out.println(cal.toString());
+        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(us.getByLogin(userName).getId(),cal.getTime()));
         return model;
     }
 

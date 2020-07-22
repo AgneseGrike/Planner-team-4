@@ -39,10 +39,12 @@ public class Appointment {
 
     @Column
     @NotNull
+    @DateTimeFormat(pattern = "HH:mm")
     LocalTime startTime;
 
     @Column
     @NotNull
+    @DateTimeFormat(pattern = "HH:mm")
     LocalTime endTime;
 
     @Column

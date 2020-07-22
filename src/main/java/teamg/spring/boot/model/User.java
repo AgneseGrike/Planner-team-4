@@ -3,6 +3,7 @@ package teamg.spring.boot.model;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
@@ -32,7 +33,6 @@ public class User {
     @Column
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Appointment> appointments;
-
     public User() {
     }
 

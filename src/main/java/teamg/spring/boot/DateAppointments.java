@@ -1,7 +1,9 @@
 package teamg.spring.boot;
 
+import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,5 +37,16 @@ public class DateAppointments {
             return true;
         }
         return false;
+    }
+    public String getDate(){
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        String mysqlDateString = formatter.format(cal.getTime());
+        return mysqlDateString;
+    }
+    public List<Appointment> getEvent(int day){
+        cal.set(Calendar.DAY_OF_MONTH,day);
+        List<Appointment> appoints = as.getAllAppointmentsByUserAndDate(userid,cal.getTime());
+        return appoints;
     }
 }
