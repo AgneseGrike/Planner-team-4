@@ -67,10 +67,10 @@ li a:hover {
 <body>
     <h1 th:text="${username}">test</h1>
     <ul>
-        <li><a th:href="@{createEvent}">create new Event</a></li>
+        <li><a th:href="@{createEvent}">Create new Event</a></li>
+        <li><a th:href="@{appointments}">See all appointments</a></li>
         <li><a href="">...</a></li>
-        <li><a href="">...</a></li>
-        <li><a href="">...</a></li>
+        <li><a th:href="@{logout}">Log out!</a></li>
     </ul>
 
     <div>

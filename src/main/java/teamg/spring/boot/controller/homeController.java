@@ -31,7 +31,11 @@ public class homeController {
     public String redirectToLogin() {
         return "redirect:/home";
     }
-
+@GetMapping("/logout")
+public String logout(){
+    SecurityContextHolder.getContext().setAuthentication(null);
+    return "redirect:/";
+}
     @GetMapping("/home")
     public String home( @RequestParam(value = "month", required = false) String month, Model model) {
 
