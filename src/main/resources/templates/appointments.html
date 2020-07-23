@@ -109,16 +109,16 @@ color: white;
 
 <body>
 <div class="sidebar-container">
-    <div class="sidebar-logo"><a th:href="@{home}">Planner</a></div>
+    <div class="sidebar-logo"><a th:href="@{/home}">Planner</a></div>
     <ul class="sidebar-navigation">
         <li class="header">...</li>
-        <li><a th:href="@{createEvent}">Add new Event</a></li>
-        <li><a th:href="@{addTask}">Add new Task</a></li>
+        <li><a th:href="@{/createEvent}">Add new Event</a></li>
+        <li><a th:href="@{/addTask}">Add new Task</a></li>
         <li class="header">...</li>
-        <li><a th:href="@{appointments}">My Events</a></li>
-        <li><a th:href="@{tasks}">My Tasks</a></li>
+        <li><a th:href="@{/appointments}">My Events</a></li>
+        <li><a th:href="@{/tasks}">My Tasks</a></li>
         <li class="header">...</li>
-        <li><a th:href="@{logout}">Log out!</a></li>
+        <li><a th:href="@{/logout}">Log out!</a></li>
     </ul>
 </div>
 
