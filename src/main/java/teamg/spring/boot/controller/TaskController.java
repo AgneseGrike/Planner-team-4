@@ -4,17 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import teamg.spring.boot.model.TaskList;
 import teamg.spring.boot.service.TaskService;
 import teamg.spring.boot.service.UserService;
 
-import javax.validation.Valid;
-import java.util.Calendar;
 
 @Controller
 public class TaskController {
