@@ -137,6 +137,16 @@
         .content-container {
           padding-left: 220px;
         }
+
+        .sidebar-logo a {
+text-decoration: none;
+color: white;
+}
+
+.sidebar-logo a:hover {
+text-decoration: none;
+color: white;
+}
     </style>
 </head>
 
@@ -144,7 +154,7 @@
 <body>
 
     <div class="sidebar-container">
-        <div class="sidebar-logo">Planner</div>
+        <div class="sidebar-logo"><a th:href="@{home}">Planner</a></div>
         <ul class="sidebar-navigation">
             <li class="header">...</li>
             <li><a th:href="@{createEvent}">Add new Event</a></li>

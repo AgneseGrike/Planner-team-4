@@ -27,18 +27,4 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/users")
-    public  Model getAllUsers(Model model){
-        LOG.info("getAllUsers");
-        model.addAttribute("listUsers", userService.getAllUsers());
-        return model;
-    }
-
-   /* @GetMapping("/")
-    public String viewHomePage(Model model){
-        //whats going on here?
-        LOG.info("getAllUsers");
-        model.addAttribute("listUsers", userService.getAllUsers());
-        return "users";
-    }  */
 }
