@@ -176,7 +176,7 @@ color: white;
                 <a th:each="date: ${days.getListDays()}"
                    th:href="@{${days.hasEvent(date)} ? '/appointments?date=' + ${days.getDate()} : '#'}"
                    th:classappend="${days.hasEvent(date)} ?  floating-box-red : floating-box">
-                    <h1 class="date" th:text="${date}"></h1></a>
+                    <h1 class="date" th:text="${date}"></h1><p th:text="${days.getName(date)}"></p></a>
 
         </div>
     </div>

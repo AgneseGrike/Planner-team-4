@@ -3,6 +3,7 @@ package teamg.spring.boot;
 import teamg.spring.boot.model.Appointment;
 import teamg.spring.boot.service.AppointmentService;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,6 +44,10 @@ public class DateAppointments {
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
         String mysqlDateString = formatter.format(cal.getTime());
         return mysqlDateString;
+    }
+    public String getName(int day){
+        cal.set(Calendar.DAY_OF_MONTH,day);
+        return new SimpleDateFormat("EEEE").format(cal.getTime());
     }
     public List<Appointment> getEvent(int day){
         cal.set(Calendar.DAY_OF_MONTH,day);
