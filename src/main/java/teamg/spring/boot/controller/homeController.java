@@ -46,7 +46,7 @@ public String logout(){
         }
 
         model.addAttribute("username",userName);
-        model.addAttribute("month", new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
+        model.addAttribute("month", new DateFormatSymbols(Locale.ENGLISH).getMonths()[cal.get(Calendar.MONTH)]);
 
         model.addAttribute("days", da);
         return "home";

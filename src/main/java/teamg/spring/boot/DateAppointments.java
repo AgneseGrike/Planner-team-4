@@ -5,10 +5,7 @@ import teamg.spring.boot.service.AppointmentService;
 
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class DateAppointments {
     long userid;
@@ -47,7 +44,7 @@ public class DateAppointments {
     }
     public String getName(int day){
         cal.set(Calendar.DAY_OF_MONTH,day);
-        return new SimpleDateFormat("EEEE").format(cal.getTime());
+        return new SimpleDateFormat("EEEE", Locale.ENGLISH).format(cal.getTime());
     }
     public List<Appointment> getEvent(int day){
         cal.set(Calendar.DAY_OF_MONTH,day);
