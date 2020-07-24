@@ -101,6 +101,14 @@ color: white;
 text-decoration: none;
 color: white;
 }
+
+pre {
+display: inline;
+}
+
+form {
+display: inline;
+}
     </style>
 </head>
 
@@ -121,30 +129,41 @@ color: white;
 
 <div class="content-container">
     <div class="container-fluid">
-        <h1>Appointment</h1>
-        <table>
-            <thead>
-            <tr>
-                <th>From Date</th>
-                <th>To Date</th>
-                <th>Notes</th>
-            </tr>
-            <tr>
-                <td th:text="${appointment.startDate}"></td>
-                <td th:text="${appointment.endDate}"></td>
-                <td th:text="${appointment.notes}"></td>
-                <td><form action="#" th:action="@{/delete/{id}(id=${appointment.id})}">
-                    <button type="submit" class="btn btn-outline-danger btn-rounded waves-effect btn-sm">DELETE</button>
-                </form></td>
-                <td><form action="#" th:action="@{/edit/{id}(id=${appointment.id})}">
-                    <button type="submit" class="btn btn-outline-info btn-rounded waves-effect btn-sm">EDIT</button>
-                </form></td>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <h1 style="margin: 20px;">Event</h1>
 
-            </tbody>
-        </table>
+                <div class="row justify-content-center">
+                    <div class="card" style="width: 50%">
+                        <h5 class="card-header h5" th:text="${appointment.title}"></h5>
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${appointment.notes}"></h5>
+                            <p class="card-text">
+                                <pre>start Date:   </pre><pre th:text="${appointment.startDate}"></pre>
+                            </p>
+                            <p class="card-text">
+                                <pre>end Date:   </pre><pre th:text="${appointment.endDate}"></pre>
+                            </p>
+
+                            <p class="card-text">
+                                <pre>Starts at:   </pre><pre th:text="${appointment.startTime}"></pre>
+                            </p>
+                            <p class="card-text">
+                                <pre>Ends at:   </pre><pre th:text="${appointment.endTime}"></pre>
+                            </p>
+                            <p class="card-text">
+                                <form action="#" th:action="@{/delete/{id}(id=${appointment.id})}">
+                                    <button type="submit" class="btn btn-outline-danger btn-rounded waves-effect btn-sm">DELETE</button>
+                                </form>
+                                <form action="#" th:action="@{/edit/{id}(id=${appointment.id})}">
+                                    <button type="submit" class="btn btn-outline-info btn-rounded waves-effect btn-sm">EDIT</button>
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

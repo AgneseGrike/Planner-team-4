@@ -126,7 +126,8 @@ color: white;
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2>Your events</h2>
+                <h2 th:if="${date}"><div>Events on </div><div th:text="${date}"></div></h2>
+                <h2 th:if="${date == null}">Your Events</div></h2>
             </div>
         </div>
 

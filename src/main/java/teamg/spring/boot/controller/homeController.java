@@ -84,8 +84,10 @@ public String logout(){
     public String getAppointmentByUserIdAndDate(Model model) {
         Date dateee = new Date(1595116800000L);
         System.out.println(dateee.toString());
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getByLogin(userName);
 
-        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(9, dateee));
+        model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(user.getId(), dateee));
         return "appointments";
     }
 

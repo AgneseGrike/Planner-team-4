@@ -47,6 +47,7 @@ public class AppointmentController {
             cal.set(Calendar.MONTH, month - 1);
             cal.set(Calendar.YEAR, year);
             model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(us.getByLogin(userName).getId(), cal.getTime()));
+            model.addAttribute("date", cal.getTime());
         }}else{
             model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUser(us.getByLogin(userName).getId()));
 

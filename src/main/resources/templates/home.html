@@ -171,7 +171,7 @@ color: white;
         <div class="container-fluid">
             <!-- Main component for a primary marketing message or call to action -->
 
-                <h1 th:text="'Welcome, ' + ${username}">test</h1>
+                <h1 th:text="'Welcome, ' + ${username}"></h1>
                 <h1 th:text="${month}"></h1>
                 <a th:each="date: ${days.getListDays()}"
                    th:href="@{${days.hasEvent(date)} ? '/appointments?date=' + ${days.getDate()} : '#'}"
