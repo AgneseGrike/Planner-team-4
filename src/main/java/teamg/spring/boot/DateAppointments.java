@@ -46,6 +46,19 @@ public class DateAppointments {
         cal.set(Calendar.DAY_OF_MONTH,day);
         return new SimpleDateFormat("EEEE", Locale.ENGLISH).format(cal.getTime());
     }
+    public boolean isToday(int day){
+
+        Calendar today = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH,day);
+        if(cal.get(Calendar.YEAR)==today.get(Calendar.YEAR)){
+            if(cal.get(Calendar.MONTH)==today.get(Calendar.MONTH)){
+                if(cal.get(Calendar.DAY_OF_MONTH)==today.get(Calendar.DAY_OF_MONTH)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public List<Appointment> getEvent(int day){
         cal.set(Calendar.DAY_OF_MONTH,day);
         List<Appointment> appoints = as.getAllAppointmentsByUserAndDate(userid,cal.getTime());
