@@ -92,6 +92,10 @@ public String logout(){
         model.addAttribute("listAppointments", appointmentService.getAllAppointmentsByUserAndDate(user.getId(), dateee));
         return "appointments";
     }
+    @GetMapping("/error")
+    public String errorMessage(Model model){
+        return "error";
+    }
 
     @GetMapping("/delete/{id}")
     public String deleteApp(@PathVariable("id") Long id, Model model) {
