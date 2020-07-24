@@ -67,6 +67,8 @@ public String logout(){
         if (errors.hasErrors()) {
             return "createEvent";
         } else {
+            appointment.setEndDate(appointment.getEndDate().plusDays(1L));
+            appointment.setStartDate(appointment.getStartDate().plusDays(1L));
             appointment.setUser(userService.getByLogin(userName));
             appointmentService.saveAppointment(appointment);
             Long id = appointment.getId();
