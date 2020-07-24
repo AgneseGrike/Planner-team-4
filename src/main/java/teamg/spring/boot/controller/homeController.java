@@ -104,7 +104,8 @@ public String logout(){
 
     @PostMapping("/update/{id}")
     public RedirectView updateUser(@PathVariable("id") long id, @ModelAttribute Appointment appointment) {
-        appointment.setUser(userService.getUserById((long) 9));
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        appointment.setUser(userService.getByLogin(userName));
         appointmentService.saveAppointment(appointment);
         return new RedirectView("/appointment/" + id);
     }

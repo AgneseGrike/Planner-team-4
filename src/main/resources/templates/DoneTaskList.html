@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Your Tasks</title>
+    <title>Done Tasks</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         table {
@@ -127,7 +127,7 @@ color: white;
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2>Your Tasks</h2>
+                <h2>Done Tasks</h2>
             </div>
         </div>
 
@@ -139,9 +139,7 @@ color: white;
                             <tr>
                                 <td><div th:text="${task.deadline}"></div></td>
                                 <td th:text="${task.title}"></td>
-                                <td><form action="#" th:action="@{/save/{id}(id=${task.id})}" method="post">
-                                    <button type="submit" class="btn btn-outline-danger btn-rounded waves-effect btn-sm">DONE</button>
-                                </form></td>
+                                <td style="color: green;">DONE</td>
                                 <td><form action="#" th:action="@{/tasks/delete/{id}(id=${task.id})}">
                                     <button type="submit" class="btn btn-outline-secondary btn-rounded waves-effect btn-sm">DELETE</button>
                                 </form></td>
@@ -151,7 +149,6 @@ color: white;
                 </div>
             </div>
         </div>
-        <a href="/tasks/done" style="content-align: right;">List with already done tasks...</a>
     </div>
 </div>
 </body>

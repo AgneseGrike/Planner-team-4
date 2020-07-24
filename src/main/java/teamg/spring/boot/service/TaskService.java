@@ -21,11 +21,19 @@ public class TaskService {
                                 "Task with ID: " + id + " not found!"));
     }
 
-    public List<TaskList> getAllTasksByUser(long userId) {
+    public List<TaskList> getTasksByUser(long userId) {
         return taskRepository.findUserTasks(userId);
+    }
+
+    public List<TaskList> getDoneTasksByUser(long userId) {
+        return taskRepository.findDoneUserTasks(userId);
     }
 
     public void saveTask(TaskList taskList) {
         taskRepository.save(taskList);
+    }
+
+    public void deleteTask(TaskList taskList) {
+        taskRepository.delete(taskList);
     }
 }

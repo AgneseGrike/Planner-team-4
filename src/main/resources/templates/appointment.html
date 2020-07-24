@@ -134,10 +134,10 @@ color: white;
                 <td th:text="${appointment.endDate}"></td>
                 <td th:text="${appointment.notes}"></td>
                 <td><form action="#" th:action="@{/delete/{id}(id=${appointment.id})}">
-                    <button type="submit">DELETE</button>
+                    <button type="submit" class="btn btn-outline-danger btn-rounded waves-effect btn-sm">DELETE</button>
                 </form></td>
                 <td><form action="#" th:action="@{/edit/{id}(id=${appointment.id})}">
-                    <button type="submit">EDIT</button>
+                    <button type="submit" class="btn btn-outline-info btn-rounded waves-effect btn-sm">EDIT</button>
                 </form></td>
             </tr>
             </thead>
